@@ -1,6 +1,6 @@
-import { Cleanse } from "../utils/Cleanse";
-import { authProcedure, baseProcedure } from "../utils/auth";
-import { db } from "../utils/prisma";
+import { Cleanse } from "../utils/Cleanse.js";
+import { authProcedure, baseProcedure } from "../utils/auth.js";
+import { db } from "../utils/prisma.js";
 import { unTypeSafeRouter } from "./index.js";
 import { z } from "zod";
 
