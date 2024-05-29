@@ -16,6 +16,7 @@ export default PublicLayoutFrontend.use<{}>(() => {
   const router = useRouter();
 
   return {
+    seo: { title: "Login" },
     children: (
       <div className={styles.container}>
         <h2>Login</h2>

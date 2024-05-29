@@ -16,6 +16,7 @@ export default PublicLayoutFrontend.use<{}>(() => {
   const router = useRouter();
 
   return {
+    seo: { title: "Register" },
     children: (
       <div className={styles.container}>
         <h2>Create Account</h2>
@@ -49,4 +50,6 @@ export default PublicLayoutFrontend.use<{}>(() => {
   };
 });
 
-export const getServerSideProps = PublicLayoutBackend.use<{}>(() => {});
+export const getServerSideProps = PublicLayoutBackend.use<{}>({
+  layoutGsspOptions: { mustBeLoggedIn: false },
+});

@@ -4,6 +4,9 @@ import styles from "./public.module.scss";
 import { Button } from "../components/Button";
 import Link from "next/link";
 import { DTOs } from "../utils/Cleanse";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import NProgress from "nprogress";
 
 export interface PublicLayoutOptions extends GenerateLayoutOptionsImpl {
   ClientSideLayoutProps: { seo?: NextSeoProps };
@@ -14,13 +17,21 @@ export interface PublicLayoutOptions extends GenerateLayoutOptionsImpl {
 
 export const PublicLayoutFrontend = implementLayoutFrontend<PublicLayoutOptions>({
   layoutComponent({ internalProps, layoutProps }) {
+    const router = useRouter();
+    useEffect(() => {
+      // setup nprogress
+      router.events.on("routeChangeStart", () => NProgress.start());
+      router.events.on("routeChangeComplete", () => NProgress.done());
+      router.events.on("routeChangeError", () => NProgress.done());
+    }, []);
+
     return (
       <>
         <NextSeo
           {...{
-            title: "Home",
             description: "The back page of the internet",
             titleTemplate: "%s | LiReddit",
+            defaultTitle: "LiReddit",
             ...layoutProps.seo,
           }}
         />

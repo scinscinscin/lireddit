@@ -25,6 +25,7 @@ export default PublicLayoutFrontend.use<Props>(() => {
   }
 
   return {
+    seo: { title: "Create Post" },
     children: (
       <div>
         <h2>Create Post</h2>

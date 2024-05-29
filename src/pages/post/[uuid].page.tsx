@@ -45,14 +45,14 @@ export default PublicLayoutFrontend.use<Props>(({ post, comments: _comments, use
       }
       const { newComment } = await client["/post"]["/:uuid/comment"].post({ body: data, path: { uuid: post.uuid } });
       setComments([...comments, newComment]);
+      Form.reset({ content: "" });
     } catch {
       toast.error("Failed to create comment");
-    } finally {
-      Form.reset({});
     }
   }
 
   return {
+    seo: { title: post.title },
     children: (
       <div>
         <header className={styles.header}>
