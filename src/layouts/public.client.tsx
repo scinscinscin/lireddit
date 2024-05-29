@@ -3,12 +3,16 @@ import { NextSeo, NextSeoProps } from "next-seo";
 import styles from "./public.module.scss";
 import { Button } from "../components/Button";
 import Link from "next/link";
+import { DTOs } from "../utils/Cleanse";
 
 export interface PublicLayoutOptions extends GenerateLayoutOptionsImpl {
   // the page can return NextSeoProps to define the SEO meta tags of the page
   ClientSideLayoutProps: { seo?: NextSeoProps };
   // the layout needs the username of the currently logged in user
-  ServerSideLayoutProps: { username: string | null };
+  ServerSideLayoutProps: { user: DTOs["user"] | null };
+  LayoutGSSPOptions: {
+    mustBeLoggedIn: boolean;
+  };
 }
 
 export const PublicLayoutFrontend = implementLayoutFrontend<PublicLayoutOptions>({
@@ -33,9 +37,9 @@ export const PublicLayoutFrontend = implementLayoutFrontend<PublicLayoutOptions>
               <h2>LiReddit</h2>
             </Link>
 
-            {internalProps.username ? (
-              <Link className={styles.username} href={"/user/" + internalProps.username}>
-                {internalProps.username}
+            {internalProps.user ? (
+              <Link className={styles.username} href={"/user/" + internalProps.user.username}>
+                {internalProps.user.username}
               </Link>
             ) : (
               <Button.Default onClick={{ href: "/login" }}>Login</Button.Default>

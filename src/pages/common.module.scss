@@ -1,9 +1,11 @@
 .form {
   label,
-  input {
+  input,
+  textarea {
     display: block;
     width: 100%;
     font-family: Inter Tight, sans-serif;
+    resize: none;
   }
 
   label {
@@ -11,7 +13,8 @@
     margin-bottom: 5px;
   }
 
-  input {
+  input,
+  textarea {
     padding: 0.5rem;
     border: 2px solid var(--secondary);
     background-color: var(--background);
@@ -20,5 +23,10 @@
     border-radius: 4px;
     margin-bottom: 10px;
     font-size: 16px;
+  }
+
+  textarea {
+    height: min-content;
+    min-height: 200px;
   }
 }

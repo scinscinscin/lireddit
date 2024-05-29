@@ -25,7 +25,9 @@ export default PublicLayoutFrontend.use<{}>(() => {
           onSubmit={LoginForm.handleSubmit(async ({ username, password }) => {
             try {
               await client["/user"]["/login"].post({ body: { username, password } });
-              router.push("/");
+              // find query parameters for redirect
+              const redirect = router.query.redirect;
+              router.push(typeof redirect === "string" ? redirect : "/");
             } catch {
               toast.error("Incorrect credentials");
             }
@@ -49,4 +51,6 @@ export default PublicLayoutFrontend.use<{}>(() => {
   };
 });
 
-export const getServerSideProps = PublicLayoutBackend.use<{}>(() => {});
+export const getServerSideProps = PublicLayoutBackend.use<{}>({
+  layoutGsspOptions: { mustBeLoggedIn: false },
+});

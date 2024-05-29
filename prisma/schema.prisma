@@ -12,23 +12,25 @@ datasource db {
 }
 
 model User {
-  uuid     String    @id @unique @default(uuid())
-  username String    @unique
-  hash     String
-  salt     String
-  posts    Post[]
-  upvotes  Upvote[]
-  comments Comment[]
+  uuid      String    @id @unique @default(uuid())
+  username  String    @unique
+  hash      String
+  salt      String
+  posts     Post[]
+  upvotes   Upvote[]
+  comments  Comment[]
+  createdAt DateTime  @default(now())
 }
 
 model Post {
-  uuid     String    @id @unique @default(uuid())
-  title    String
-  author   User      @relation(fields: [authorId], references: [uuid])
-  content  String
-  authorId String
-  upvotes  Upvote[]
-  comments Comment[]
+  uuid      String    @id @unique @default(uuid())
+  title     String
+  author    User      @relation(fields: [authorId], references: [uuid])
+  content   String
+  authorId  String
+  upvotes   Upvote[]
+  comments  Comment[]
+  createdAt DateTime  @default(now())
 }
 
 model Upvote {
@@ -40,10 +42,11 @@ model Upvote {
 }
 
 model Comment {
-  uuid     String @id @default(uuid())
-  content  String
-  post     Post   @relation(fields: [postId], references: [uuid])
-  postId   String
-  author   User   @relation(fields: [authorId], references: [uuid])
-  authorId String
+  uuid      String   @id @default(uuid())
+  content   String
+  post      Post     @relation(fields: [postId], references: [uuid])
+  postId    String
+  author    User     @relation(fields: [authorId], references: [uuid])
+  authorId  String
+  createdAt DateTime @default(now())
 }
