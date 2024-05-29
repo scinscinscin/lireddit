@@ -9,6 +9,10 @@ const CreatePostValidator = z.object({
   content: z.string(),
 });
 
+const CreateCommentValidator = z.object({
+  content: z.string(),
+});
+
 export const postRouter = unTypeSafeRouter.sub("/post", {
   "/create": {
     post: authProcedure.input(CreatePostValidator).use(async (req, res, { user, input }) => {
@@ -24,6 +28,17 @@ export const postRouter = unTypeSafeRouter.sub("/post", {
       });
 
       return { newPost: Cleanse.post(newPost) };
+    }),
+  },
+
+  "/:uuid/comment": {
+    post: authProcedure.input(CreateCommentValidator).use(async (req, res, { input, user }) => {
+      const newComment = await db.comment.create({
+        data: { content: input.content, authorId: user.uuid, postId: req.params.uuid },
+        include: { author: true },
+      });
+
+      return { newComment: Cleanse.comment(newComment) };
     }),
   },
 });

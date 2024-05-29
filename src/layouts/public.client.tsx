@@ -6,19 +6,13 @@ import Link from "next/link";
 import { DTOs } from "../utils/Cleanse";
 
 export interface PublicLayoutOptions extends GenerateLayoutOptionsImpl {
-  // the page can return NextSeoProps to define the SEO meta tags of the page
   ClientSideLayoutProps: { seo?: NextSeoProps };
-  // the layout needs the username of the currently logged in user
   ServerSideLayoutProps: { user: DTOs["user"] | null };
-  LayoutGSSPOptions: {
-    mustBeLoggedIn: boolean;
-  };
+  ExportedInternalProps: { user: DTOs["user"] | null };
+  LayoutGSSPOptions: { mustBeLoggedIn: boolean };
 }
 
 export const PublicLayoutFrontend = implementLayoutFrontend<PublicLayoutOptions>({
-  /**
-   * Create a layout that prints the currently logged in user
-   */
   layoutComponent({ internalProps, layoutProps }) {
     return (
       <>
@@ -38,9 +32,10 @@ export const PublicLayoutFrontend = implementLayoutFrontend<PublicLayoutOptions>
             </Link>
 
             {internalProps.user ? (
-              <Link className={styles.username} href={"/user/" + internalProps.user.username}>
-                {internalProps.user.username}
-              </Link>
+              <span className={styles.navbar}>
+                <Link href={"/post/create"}>Create Post</Link>
+                <Link href={"/user/" + internalProps.user.username}>{internalProps.user.username}</Link>
+              </span>
             ) : (
               <Button.Default onClick={{ href: "/login" }}>Login</Button.Default>
             )}
@@ -51,4 +46,6 @@ export const PublicLayoutFrontend = implementLayoutFrontend<PublicLayoutOptions>
       </>
     );
   },
+
+  generateExportedInternalProps: ({ user }) => ({ user }),
 });

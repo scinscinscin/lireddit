@@ -5,7 +5,7 @@
     display: block;
     width: 100%;
     font-family: Inter Tight, sans-serif;
-    resize: none;
+    resize: vertical;
   }
 
   label {
@@ -28,5 +28,9 @@
   textarea {
     height: min-content;
     min-height: 200px;
+  }
+
+  button[type="submit"] {
+    margin-top: 20px;
   }
 }

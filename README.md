@@ -24,7 +24,7 @@ A template for creating projects using scinstack
  - [x] Setup database models
  - [ ] Setup API
  - [ ] Create user page
- - [ ] Create post page
+ - [x] Create post page
  - [ ] Figure out a design system
  - [ ] Build main page
  - [ ] Build page for posts

@@ -13,7 +13,6 @@
 
   .header {
     border-bottom: 2px solid var(--secondary);
-    margin-bottom: 20px;
 
     padding: 15px 30px;
     display: flex;
@@ -29,13 +28,17 @@
       text-decoration: underline;
     }
 
-    .username {
-      font-weight: 500;
+    .navbar {
+      display: flex;
+      gap: 30px;
+      a {
+        font-weight: 500;
+      }
     }
   }
 
   .main {
-    padding: 0px 30px;
+    padding: 30px 30px;
     flex: 1;
   }
 }

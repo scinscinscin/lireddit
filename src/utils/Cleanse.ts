@@ -18,6 +18,15 @@ export const Cleanse = {
       createdAt: post.createdAt.valueOf(),
     };
   },
+
+  comment: (comment: DBModels.Comment & { author: DBModels.User }) => {
+    return {
+      uuid: comment.uuid,
+      content: comment.content,
+      user: Cleanse.user(comment.author),
+      createdAt: comment.createdAt.valueOf(),
+    };
+  },
 };
 
 export type DTOs = {

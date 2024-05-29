@@ -27,7 +27,7 @@ function Post({ post }: { post: DTOs["post"] }) {
       </main>
 
       <footer className={styles.footer}>
-        <Link href={"/post" + post.uuid}>View Post</Link>
+        <Link href={"/post/" + post.uuid}>View Post</Link>
       </footer>
     </div>
   );

@@ -1,0 +1,72 @@
+.article {
+  h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+  }
+
+  p {
+    color: var(--paragraph);
+    font-size: 18px;
+    white-space: pre-wrap;
+  }
+}
+
+.comments_container {
+  margin-top: 30px;
+
+  .comment_form {
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+    textarea {
+      min-height: 100px;
+    }
+  }
+
+  .cta {
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .comments {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.comment {
+  font-weight: 500;
+
+  > p {
+    font-size: 18px;
+    color: var(--paragraph);
+  }
+}
+
+.comment_author,
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+
+  a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  a:hover {
+    color: var(--highlight);
+    text-decoration: underline;
+  }
+
+  p {
+    color: var(--secondary);
+  }
+}
+
+.header {
+  margin-bottom: 20px;
+}
