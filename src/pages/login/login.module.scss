@@ -1,0 +1,21 @@
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+
+  > h2 {
+    margin-bottom: 20px;
+  }
+
+  .form {
+    margin-bottom: 20px;
+  }
+
+  .cta {
+    font-weight: 500;
+    color: var(--paragraph);
+
+    a {
+      color: var(--tertiary);
+    }
+  }
+}

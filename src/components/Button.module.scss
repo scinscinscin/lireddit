@@ -1,0 +1,18 @@
+.Default {
+  background-color: var(--button);
+  color: var(--button-text);
+  padding: 10px 15px;
+  border: none;
+  font-family: Inter Tight, sans-serif;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.Default[disabled] {
+  cursor: not-allowed;
+  background-color: var(--secondary);
+}

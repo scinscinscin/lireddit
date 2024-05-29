@@ -7,6 +7,7 @@ export const PublicLayoutBackend = implementLayoutBackend<PublicLayoutOptions>({
    */
   async getServerSideProps(ctx) {
     const username = ctx.res.locals.user?.username ?? null;
+    console.log({ username });
 
     return {
       props: { layout: { username } },

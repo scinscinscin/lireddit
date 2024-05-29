@@ -11,7 +11,7 @@ import cryptoRandomString from "crypto-random-string";
 export const hashPassword = generateHashingFunction({});
 export const createSalt = generateSaltFunction();
 export const JwtAuth = generateJWTAuth<{ uuid: string }, User>({
-  cookieName: "ssr-template-auth",
+  cookieName: "lireddit-auth",
   jwtKey: ServerConstants.JWT_SECRET,
 
   getUserFromPayload: async ({ uuid }) => {

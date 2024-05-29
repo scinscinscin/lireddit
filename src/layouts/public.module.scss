@@ -7,17 +7,33 @@
 
   .header,
   .main {
-    padding: 15px 30px;
-    max-width: 1300px;
+    max-width: 800px;
     width: 100%;
     margin: 0 auto;
   }
 
   .header {
-    height: 60px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .username {
+      font-weight: 500;
+    }
   }
 
   .main {
+    padding: 0px 30px;
     flex: 1;
   }
 }
