@@ -1,0 +1,23 @@
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+  color: var(--main);
+
+  .header,
+  .main {
+    padding: 15px 30px;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .header {
+    height: 60px;
+  }
+
+  .main {
+    flex: 1;
+  }
+}
